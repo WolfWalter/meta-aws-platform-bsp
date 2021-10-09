@@ -1,0 +1,56 @@
+header:
+  version: 10
+
+machine: raspberrypi4-64
+distro: poky
+target: core-image-minimal
+
+repos:
+  poky:
+    url: https://git.yoctoproject.org/git/poky
+    refspec: hardknott
+    layers:
+      meta:
+      meta-poky:
+
+  meta-openembedded:
+    url: http://git.openembedded.org/meta-openembedded
+    refspec: hardknott
+    path: poky/meta-openembedded
+    layers:
+      meta-oe:
+      meta-python:
+      meta-networking:
+
+  meta-raspberrypi:
+    url: https://github.com/agherzan/meta-raspberrypi/
+    path: poky/meta-raspberrypi
+    refspec: hardknott
+
+bblayers_conf_header:
+  standard: |
+    POKY_BBLAYERS_CONF_VERSION = "2"
+    BBPATH = "${TOPDIR}"
+    BBFILES ?= ""
+
+local_conf_header:
+  standard: |
+    CONF_VERSION = "1"
+    PACKAGE_CLASSES = "package_rpm"
+    SDKMACHINE = "x86_64"
+    USER_CLASSES = "buildstats image-mklibs image-prelink"
+    PATCHRESOLVE = "noop"
+
+  debug-tweaks: |
+    EXTRA_IMAGE_FEATURES = "debug-tweaks ssh-server-dropbear package-management"
+
+  diskmon: |
+    BB_DISKMON_DIRS = "\
+        STOPTASKS,${TMPDIR},1G,100K \
+        STOPTASKS,${DL_DIR},1G,100K \
+        STOPTASKS,${SSTATE_DIR},1G,100K \
+        STOPTASKS,/tmp,100M,100K \
+        ABORT,${TMPDIR},100M,1K \
+        ABORT,${DL_DIR},100M,1K \
+        ABORT,${SSTATE_DIR},100M,1K \
+        ABORT,/tmp,10M,1K"
