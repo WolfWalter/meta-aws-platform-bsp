@@ -3,7 +3,7 @@ header:
 
 machine: raspberrypi4-64
 distro: poky
-target: core-image-minimal
+target: solvispi-image
 
 repos:
   poky:
@@ -12,6 +12,7 @@ repos:
     layers:
       meta:
       meta-poky:
+      meta-yocto-bsp:
 
   meta-openembedded:
     url: http://git.openembedded.org/meta-openembedded
@@ -26,6 +27,10 @@ repos:
     url: https://github.com/agherzan/meta-raspberrypi/
     path: poky/meta-raspberrypi
     refspec: hardknott
+
+  meta-solvispi:
+    layers:
+      meta-solvispi:
 
 bblayers_conf_header:
   standard: |
@@ -42,7 +47,7 @@ local_conf_header:
     PATCHRESOLVE = "noop"
 
   debug-tweaks: |
-    EXTRA_IMAGE_FEATURES = "debug-tweaks ssh-server-dropbear package-management"
+    EXTRA_IMAGE_FEATURES = "debug-tweaks"
 
   diskmon: |
     BB_DISKMON_DIRS = "\
