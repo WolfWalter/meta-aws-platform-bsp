@@ -28,6 +28,11 @@ repos:
     path: poky/meta-raspberrypi
     refspec: hardknott
 
+  meta-aws:
+    url: https://github.com/awps/meta-aws.git
+    path: poky/meta-aws
+    refspec: hardknott
+
   meta-solvispi:
     layers:
       meta-solvispi:
@@ -45,6 +50,7 @@ local_conf_header:
     SDKMACHINE = "x86_64"
     USER_CLASSES = "buildstats image-mklibs image-prelink"
     PATCHRESOLVE = "noop"
+    RPI_EXTRA_CONFIG = "arm_64bit=1\nenable_uart=1"
 
   debug-tweaks: |
     EXTRA_IMAGE_FEATURES = "debug-tweaks"
