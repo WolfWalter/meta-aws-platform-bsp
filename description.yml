@@ -50,7 +50,7 @@ local_conf_header:
     SDKMACHINE = "x86_64"
     USER_CLASSES = "buildstats image-mklibs image-prelink"
     PATCHRESOLVE = "noop"
-    RPI_EXTRA_CONFIG = "arm_64bit=1\nenable_uart=1"
+    RPI_EXTRA_CONFIG = ""
 
   debug-tweaks: |
     EXTRA_IMAGE_FEATURES = "debug-tweaks"

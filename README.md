@@ -18,3 +18,9 @@
 ## Build image
 
 Build image with `kas build description.yml`
+
+## Other
+
+- execute bitbake: `kas shell description.yml -c 'bitbake -e rpi-bootfiles | grep ^WORKDIR='`
+- cleanall: `kas shell description.yml -c 'bitbake -c cleanall'`
+- sshfs `sudo sshfs -o allow_other root@192.168.178.71:/ /mnt/rpi/`
