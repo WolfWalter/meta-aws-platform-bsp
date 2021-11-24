@@ -8,7 +8,7 @@ target: solvispi-image
 repos:
   poky:
     url: https://git.yoctoproject.org/git/poky
-    refspec: hardknott
+    refspec: honister
     layers:
       meta:
       meta-poky:
@@ -16,7 +16,7 @@ repos:
 
   meta-openembedded:
     url: http://git.openembedded.org/meta-openembedded
-    refspec: hardknott
+    refspec: honister
     path: poky/meta-openembedded
     layers:
       meta-oe:
@@ -26,12 +26,12 @@ repos:
   meta-raspberrypi:
     url: https://github.com/agherzan/meta-raspberrypi/
     path: poky/meta-raspberrypi
-    refspec: hardknott
+    refspec: honister
 
   meta-aws:
-    url: https://github.com/awps/meta-aws.git
+    url: https://github.com/aws/meta-aws.git
     path: poky/meta-aws
-    refspec: hardknott
+    refspec: honister
 
   meta-solvispi:
     layers:
@@ -45,10 +45,10 @@ bblayers_conf_header:
 
 local_conf_header:
   standard: |
-    CONF_VERSION = "1"
+    CONF_VERSION = "2"
     PACKAGE_CLASSES = "package_rpm"
     SDKMACHINE = "x86_64"
-    USER_CLASSES = "buildstats image-mklibs image-prelink"
+    USER_CLASSES = "buildstats image-prelink"
     PATCHRESOLVE = "noop"
     RPI_EXTRA_CONFIG = ""
 
