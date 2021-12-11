@@ -24,14 +24,14 @@ repos:
       meta-networking:
 
   meta-raspberrypi:
-    url: https://github.com/agherzan/meta-raspberrypi/
+    url: https://github.com/agherzan/meta-raspberrypi.git
     path: poky/meta-raspberrypi
     refspec: honister
 
   meta-aws:
     url: https://github.com/aws/meta-aws.git
     path: poky/meta-aws
-    refspec: honister
+    refspec: master
 
   meta-solvispi:
     layers:
@@ -50,7 +50,11 @@ local_conf_header:
     SDKMACHINE = "x86_64"
     USER_CLASSES = "buildstats image-prelink"
     PATCHRESOLVE = "noop"
-    RPI_EXTRA_CONFIG = ""
+    RPI_EXTRA_CONFIG = ' \n \
+      kernel=kernel_rpilinux.img\n \
+      arm_64bit=1\n \
+      enable_uart=1\n \
+      '
 
   debug-tweaks: |
     EXTRA_IMAGE_FEATURES = "debug-tweaks"

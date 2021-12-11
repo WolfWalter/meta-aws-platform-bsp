@@ -1,0 +1,2 @@
+PACKAGECONFIG += " samples"
+PACKAGECONFIG += " pubsub"

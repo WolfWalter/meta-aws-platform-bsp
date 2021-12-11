@@ -22,5 +22,6 @@ Build image with `kas build description.yml`
 ## Other
 
 - execute bitbake: `kas shell description.yml -c 'bitbake -e rpi-bootfiles | grep ^WORKDIR='`
-- cleanall: `kas shell description.yml -c 'bitbake -c cleanall'`
+- cleanall: `kas shell description.yml -c 'bitbake -c cleanall solvispi-image'`
 - sshfs `sudo sshfs -o allow_other root@192.168.178.71:/ /mnt/rpi/`
+- on sshfs issues run: `sudo sshfs -odebug,sshfs_debug,loglevel=debug -o allow_other root@192.168.178.71:/ /mnt/rpi/`
